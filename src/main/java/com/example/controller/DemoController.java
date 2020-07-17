@@ -97,6 +97,7 @@ public class DemoController{
     }
     @RequestMapping("/testHttp")
     public String getHttp(){
+        log.info("------------------------");
         RestTemplate restTemplate = new RestTemplate();
         String forObject = restTemplate.getForObject("http://localhost:8081/demoHttp/demo", String.class);
         System.out.println(forObject);

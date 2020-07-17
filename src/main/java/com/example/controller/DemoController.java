@@ -99,7 +99,7 @@ public class DemoController{
     public String getHttp(){
         log.info("------------------------");
         RestTemplate restTemplate = new RestTemplate();
-        String forObject = restTemplate.getForObject("http://localhost:8081/demoHttp/demo", String.class);
+        String forObject = restTemplate.getForObject("http://192.168.157.128:8081/demoHttp/demo", String.class);
         System.out.println(forObject);
         return forObject;
     }

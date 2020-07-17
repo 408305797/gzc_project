@@ -21,6 +21,9 @@ public class RedisTest {
         new RedisTest().aaa();
 //        System.out.println(host);
 //        Jedis jedis = new Jedis(host);
+
+
+
 //        jedis.auth(password);
 //        System.out.println(jedis.ping());
     }

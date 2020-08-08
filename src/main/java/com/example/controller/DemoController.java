@@ -6,12 +6,14 @@ import com.example.VO.ListVo;
 import com.example.VO.ResultVO;
 import com.example.cache.RedisUtils;
 import com.example.entity.DemoEntity;
+import com.example.quartz.QuartzConfig;
 import com.example.service.DemoService;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.google.gson.JsonObject;
 import kafka.utils.Json;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
+import org.quartz.SchedulerException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
@@ -30,6 +32,9 @@ public class DemoController{
     private DemoService demoService;
     @Autowired
     private RedisUtils redisUtils;
+
+    @Autowired
+    private QuartzConfig quartzConfig;
 
     @RequestMapping("/insert")
     public void insertEntity(){
@@ -103,4 +108,11 @@ public class DemoController{
         System.out.println(forObject);
         return forObject;
     }
+
+    @RequestMapping("/start")
+    public Boolean StartMyJob() throws SchedulerException{
+        quartzConfig.startJob();
+        return true;
+    }
+
 }
